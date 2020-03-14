@@ -28,6 +28,7 @@ var request: URLRequest {
     ]
     let endpoint = URLSession.Endpoint(server: .development, path: "/endpoint/get", queryItems: queryItems)
     return URLRequest(url: endpoint.url!)
+}
 ```
 
 or
