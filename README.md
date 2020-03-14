@@ -20,12 +20,27 @@ extension URLSession.Server {
 Then, create the request:
 
 ```swift
-var postRequest: URLRequest {
-    let endpoint = URLSession.Endpoint(server: .development, path: "/post")
+// GET
+var request: URLRequest {
+    let queryItems = [
+        URLQueryItem(name: "foo1", value: "bar1"),
+        URLQueryItem(name: "foo2", value: "bar2")
+    ]
+    let endpoint = URLSession.Endpoint(server: .development, path: "/endpoint/get", queryItems: queryItems)
+    return URLRequest(url: endpoint.url!)
+```
+
+or
+
+```swift
+// POST
+var request: URLRequest {
+    let endpoint = URLSession.Endpoint(server: .development, path: "/endpoint/post")
     let body = FooBar(foo1: "bar1", foo2: "bar2")
     return URLRequest(url: endpoint.url!, body: body)
 }
 ```
+
 
 And finally, load your resource:
 
