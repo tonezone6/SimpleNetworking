@@ -26,7 +26,8 @@ var request: URLRequest {
         URLQueryItem(name: "foo1", value: "bar1"),
         URLQueryItem(name: "foo2", value: "bar2")
     ]
-    let endpoint = URLSession.Endpoint(server: .development, path: "/endpoint/get", queryItems: queryItems)
+    let endpoint = URLSession.Endpoint(
+        server: .development, path: "/endpoint/get", queryItems: queryItems)
     return URLRequest(url: endpoint.url!)
 }
 ```
