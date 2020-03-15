@@ -27,7 +27,7 @@ var request: URLRequest {
         URLQueryItem(name: "foo2", value: "bar2")
     ]
     let endpoint = URLSession.Endpoint(
-        server: .development, path: "api/endpoint", queryItems: queryItems)
+        server: .development, path: "/api/endpoint", queryItems: queryItems)
     return URLRequest(url: endpoint.url!)
 }
 ```
@@ -37,8 +37,7 @@ or
 ```swift
 // POST
 var request: URLRequest {
-    let endpoint = URLSession.Endpoint(
-        server: .development, path: "/api/endpoint")
+    let endpoint = URLSession.Endpoint(server: .development, path: "/api/endpoint")
     let body = FooBar(foo1: "bar1", foo2: "bar2")
     return URLRequest(url: endpoint.url!, body: body)
 }
