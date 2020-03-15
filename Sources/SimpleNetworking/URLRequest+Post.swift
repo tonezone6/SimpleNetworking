@@ -2,7 +2,7 @@
 
 import Foundation
 
-extension URLRequest {
+public extension URLRequest {
     init<T: Encodable>(url: URL, body: T) {
         self.init(url: url)
         httpMethod = "POST"

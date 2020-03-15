@@ -2,7 +2,7 @@
 
 import Foundation
 
-extension URLSession {
+public extension URLSession {
     struct Server {
         let scheme: String
         let host: String
