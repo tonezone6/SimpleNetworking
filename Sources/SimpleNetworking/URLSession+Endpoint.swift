@@ -2,24 +2,29 @@
 
 import Foundation
 
-public extension URLSession {
-    struct Server {
+extension URLSession {
+    public struct Server {
         let scheme: String
         let host: String
+        
+        public init(scheme: String, host: String) {
+            self.scheme = scheme
+            self.host = host
+        }
     }
 
-    struct Endpoint {
-        let server: Server
-        let path: String
-        let queryItems: [URLQueryItem]?
+    public struct Endpoint {
+        public let server: Server
+        public let path: String
+        public let queryItems: [URLQueryItem]?
         
-        init(server: Server, path: String, queryItems: [URLQueryItem]? = nil) {
+        public init(server: Server, path: String, queryItems: [URLQueryItem]? = nil) {
             self.server = server
             self.path = path
             self.queryItems = queryItems
         }
         
-        var url: URL? {
+        public var url: URL? {
             var components = URLComponents()
             components.scheme = server.scheme
             components.host = server.host
