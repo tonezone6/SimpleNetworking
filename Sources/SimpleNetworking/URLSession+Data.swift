@@ -3,7 +3,7 @@
 import Foundation
 
 public protocol URLSessionProtocol {
-    func load<T: Decodable>(_ type: T.Type, with request: URLRequest, completion: @escaping (Result<T, Error>) -> Void)
+    func load<A: Codable>(_ type: A.Type, with request: URLRequest, completion: @escaping (Result<A, Error>) -> Void)
 }
 
 enum URLSessionError: LocalizedError {
@@ -21,13 +21,13 @@ extension URLSession {
 }
 
 extension URLSession: URLSessionProtocol {
-    public func load<T: Decodable>(_ type: T.Type, with request: URLRequest, completion: @escaping (Result<T, Error>) -> Void) {
+    public func load<A: Codable>(_ type: A.Type, with request: URLRequest, completion: @escaping (Result<A, Error>) -> Void) {
         data(with: request) { loadingResult in
             switch loadingResult {
             case .failure(let error):
                 completion(.failure(error))
             case .success(let data):
-                let result = Result { try JSONDecoder().decode(T.self, from: data) }
+                let result = Result { try JSONDecoder().decode(A.self, from: data) }
                 completion(result)
             }
         }
