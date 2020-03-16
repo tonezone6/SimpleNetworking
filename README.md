@@ -1,6 +1,6 @@
 # SimpleNetworking
 
-A simple networking package using URLSession 
+A simple networking solution extending URLSession 
 
 ## Usage
 Firstly, define your server(s):
