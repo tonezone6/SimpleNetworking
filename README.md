@@ -28,7 +28,7 @@ var request: URLRequest {
     ]
     let endpoint = URLSession.Endpoint(
         server: .development, path: "/api/endpoint", queryItems: queryItems)
-    return URLRequest(url: endpoint.url!)
+    return URLRequest(url: endpoint.url)
 }
 ```
 
@@ -39,7 +39,7 @@ or
 var request: URLRequest {
     let endpoint = URLSession.Endpoint(server: .development, path: "/api/endpoint")
     let body = FooBar(foo1: "bar1", foo2: "bar2")
-    return URLRequest(url: endpoint.url!, body: body)
+    return URLRequest(url: endpoint.url, body: body)
 }
 ```
 
