@@ -24,14 +24,18 @@ extension URLSession {
             self.queryItems = queryItems
         }
         
-        public var url: URL? {
+        public var url: URL {
             var components = URLComponents()
             components.scheme = server.scheme
             components.host = server.host
             components.path = path
             components.queryItems = queryItems
             
-            return components.url
+            guard let url = components.url else {
+                preconditionFailure("Invalid URL components, \(components)")
+            }
+            
+            return url
         }
     }
 }
