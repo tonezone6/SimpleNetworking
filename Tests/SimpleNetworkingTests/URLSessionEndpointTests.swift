@@ -2,6 +2,7 @@ import XCTest
 @testable import SimpleNetworking
 
 final class SimpleNetworkingTests: XCTestCase {
+    
     func testEndpointUrlFormat() {
         let server = URLSession.Server(scheme: "https", host: "www.host.com")
         let endpoint = URLSession.Endpoint(server: server, path: "/api/endpoint")
@@ -18,12 +19,5 @@ final class SimpleNetworkingTests: XCTestCase {
         let endpoint = URLSession.Endpoint(server: server, path: "/api/endpoint", queryItems: qitems)
         
         XCTAssertEqual(endpoint.url, URL(string: "https://www.host.com/api/endpoint?foo1=bar1&foo2=bar2"))
-    }
-    
-    func testEndpointUrlFail() throws {
-        let server = URLSession.Server(scheme: "https", host: "www.host.com")
-        let endpoint = URLSession.Endpoint(server: server, path: "api/endpoint")
-        
-        XCTAssertNil(endpoint.url)
     }
 }

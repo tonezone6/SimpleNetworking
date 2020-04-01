@@ -2,6 +2,7 @@ import XCTest
 @testable import SimpleNetworking
 
 final class URLRequestPostTests: XCTestCase {
+    
     struct Body: Codable {
         var foo1: String
         var foo2: String
